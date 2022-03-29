@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1013595844140",
+    "project_id": "kopelmantwitter",
+    "storage_bucket": "kopelmantwitter.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1013595844140:android:1ddc85e9533dbd241deb89",
+        "android_client_info": {
+          "package_name": "com.example.yalla"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1013595844140-mmslb94ls1rgri0h25hdoa030lnfv38g.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCptl8uGA56q_pPB_G7V78re5DOVpjDGDw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1013595844140-mmslb94ls1rgri0h25hdoa030lnfv38g.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
