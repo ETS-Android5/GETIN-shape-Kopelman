@@ -98,26 +98,13 @@ public class loginActivity extends AppCompatActivity {
     }
 
     private void sendUserToNextActivity() {
-        Intent intent = new Intent(loginActivity.this,MainActivity2.class);
-
-
-        Bundle bundle = new Bundle();
-        bundle.putString("email",inputEmail.getText().toString());
-        bundle.putString("password",inputPassword.getText().toString());
-        infoFragment fragobj = new infoFragment();
-        fragobj.setArguments(bundle);
+        Intent intent = new Intent(loginActivity.this,PhoneLogin.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK| Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(intent);
     }
     private void sendManagerToNextActivity() {
-        //Intent intent = new Intent(loginActivity.this,MainActivity2.class);
-        Bundle bundle = new Bundle();
-        bundle.putString("email",inputEmail.getText().toString());
-        bundle.putString("password",inputPassword.getText().toString());
-        infoFragment fragobj = new infoFragment();
-        fragobj.setArguments(bundle);
-
-        //intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK| Intent.FLAG_ACTIVITY_NEW_TASK);
-        //startActivity(intent);
+        Intent intent = new Intent(loginActivity.this,PhoneLogin.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK| Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(intent);
     }
 }

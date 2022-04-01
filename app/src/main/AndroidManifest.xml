@@ -4,11 +4,14 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@drawable/cover"
-        android:label="Kopelman Football-Science"
+        android:icon="@drawable/covertrain"
+        android:label="Kopelman Trainer"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light">
+        <activity
+            android:name=".verifyPhone"
+            android:exported="false" />
         <activity android:name=".MainActivity2" />
         <activity android:name=".WelcomePage" />
         <activity android:name=".signUpActivity" />

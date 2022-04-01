@@ -28,10 +28,13 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.ValueEventListener;
 
+import org.w3c.dom.Text;
+
 public class infoFragment extends Fragment {
 
-    private TextView textView;
     private DatabaseReference mDatabase;
+    FirebaseAuth firebaseAuth;
+    FirebaseUser firebaseUser;
 // ...
 
     @Override
@@ -46,25 +49,16 @@ public class infoFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_info, container, false);
-        TextView mName = (TextView)view.findViewById(R.id.textView4);
-        mDatabase = FirebaseDatabase.getInstance().getReference();
+        TextView mEmail = (TextView)view.findViewById(R.id.textEmail);
+        TextView mCreatedDate = (TextView) view.findViewById(R.id.textPassword);
+        TextView mDetail = (TextView) view.findViewById(R.id.textDetail);
 
-        getdata();
+        firebaseAuth = FirebaseAuth.getInstance();
+        firebaseUser = firebaseAuth.getCurrentUser();
 
+       mEmail.setText(mEmail.getText().toString() + " " + firebaseAuth.getCurrentUser().getEmail().toString());
+       mCreatedDate.setText("User ID: " + firebaseAuth.getUid().toString());
+       mDetail.setText(mDetail.getText().toString() + " " + firebaseAuth.getApp().getName());
         return view;
-    }
-
-    private void getdata() {
-        mDatabase.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                String value = snapshot.getValue(String.class);
-                textView.setText(value);
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-            }
-        });
     }
 }
