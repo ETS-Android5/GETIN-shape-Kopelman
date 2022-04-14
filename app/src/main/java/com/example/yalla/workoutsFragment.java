@@ -42,13 +42,11 @@ public class workoutsFragment extends Fragment {
         List<HashMap<String,String>> aList = new ArrayList<HashMap<String,String>>();
         ArrayAdapter arrayAdapter = new ArrayAdapter(getActivity(), android.R.layout.simple_list_item_1, workouts);
         listView.setAdapter(arrayAdapter);
-
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 if (position == 0){
-                    Intent it = new Intent(getActivity(),MainActivity.class);
-                    startActivity(it);
+                    Toast.makeText(getActivity(), "ABS FOR YOU", Toast.LENGTH_SHORT).show();
                 }
             }
         });

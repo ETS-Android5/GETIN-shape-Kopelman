@@ -18,16 +18,16 @@
             android:layout_width="wrap_content"
             android:layout_height="130dp"
             android:gravity="center_horizontal"
-            android:text="My Personal Trainer"
+            android:text="Kopelman Personal Trainer"
             android:textAlignment="center"
             android:textColor="@color/black"
             android:textSize="40dp" />
 
         <ImageView
             android:id="@+id/imageView3"
-            android:layout_width="match_parent"
-            android:layout_height="411dp"
-            app:srcCompat="@drawable/covertrain" />
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:srcCompat="@drawable/logo" />
 
         <Button
             android:id="@+id/button1"
