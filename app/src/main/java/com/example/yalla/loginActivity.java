@@ -98,12 +98,12 @@ public class loginActivity extends AppCompatActivity {
     }
 
     private void sendUserToNextActivity() {
-        Intent intent = new Intent(loginActivity.this,MainActivity2.class);
+        Intent intent = new Intent(loginActivity.this,PhoneLogin.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK| Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(intent);
     }
     private void sendManagerToNextActivity() {
-        Intent intent = new Intent(loginActivity.this,MainActivity2 .class);
+        Intent intent = new Intent(loginActivity.this,PhoneLogin .class);
         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK| Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(intent);
     }
