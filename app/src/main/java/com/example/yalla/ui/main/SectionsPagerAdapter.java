@@ -12,13 +12,18 @@ import com.example.yalla.FoodFragment;
 import com.example.yalla.R;
 import com.example.yalla.infoFragment;
 import com.example.yalla.workoutsFragment;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
 
 /**
  * A [FragmentPagerAdapter] that returns a fragment corresponding to
  * one of the sections/tabs/pages.
  */
 public class SectionsPagerAdapter extends FragmentPagerAdapter {
-
+    private DatabaseReference mDatabase;
+    FirebaseAuth firebaseAuth;
+    FirebaseUser firebaseUser;
     @StringRes
     private static final int[] TAB_TITLES = new int[]{R.string.tab_text_1, R.string.tab_text_2,R.string.tab_text_3};
     private final Context mContext;
@@ -26,10 +31,13 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
     public SectionsPagerAdapter(Context context, FragmentManager fm) {
         super(fm);
         mContext = context;
+        firebaseAuth = FirebaseAuth.getInstance();
+        firebaseUser = firebaseAuth.getCurrentUser();
     }
 
     @Override
     public Fragment getItem(int position) {
+
         Fragment fragment = null;
         switch (position){
             case 0:

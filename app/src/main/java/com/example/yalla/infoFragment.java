@@ -13,6 +13,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -52,13 +53,24 @@ public class infoFragment extends Fragment {
         TextView mEmail = (TextView)view.findViewById(R.id.textEmail);
         TextView mCreatedDate = (TextView) view.findViewById(R.id.textPassword);
         TextView mDetail = (TextView) view.findViewById(R.id.textDetail);
+        Button btnLogout = (Button)view.findViewById(R.id.btnLogOut);
 
         firebaseAuth = FirebaseAuth.getInstance();
         firebaseUser = firebaseAuth.getCurrentUser();
 
        mEmail.setText(mEmail.getText().toString() + " " + firebaseAuth.getCurrentUser().getEmail().toString());
        mCreatedDate.setText("User ID: " + firebaseAuth.getUid().toString());
-       mDetail.setText(mDetail.getText().toString() + " " + firebaseAuth.getApp().getName());
+       mDetail.setText(firebaseAuth.getCurrentUser().getPhoneNumber());
+
+       btnLogout.setOnClickListener(new View.OnClickListener() {
+           @Override
+           public void onClick(View v) {
+               Intent it = new Intent(getActivity(),MainActivity.class);
+               Toast.makeText(getActivity(),"Logout",Toast.LENGTH_SHORT).show();
+               firebaseAuth.signOut();
+               startActivity(it);
+           }
+       });
         return view;
     }
 }

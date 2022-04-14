@@ -45,4 +45,11 @@
         android:textSize="60px"
         android:inputType="textPersonName" />
 
+    <Button
+        android:id="@+id/btnLogOut"
+        android:layout_marginTop="250dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="LOGOUT" />
+
 </FrameLayout>

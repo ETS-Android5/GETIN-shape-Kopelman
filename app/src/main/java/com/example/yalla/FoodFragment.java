@@ -8,57 +8,49 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link FoodFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
+import com.jjoe64.graphview.GraphView;
+import com.jjoe64.graphview.series.DataPoint;
+import com.jjoe64.graphview.series.LineGraphSeries;
+
 public class FoodFragment extends Fragment {
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
 
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
-
-    public FoodFragment() {
-        // Required empty public constructor
-    }
-
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment FoodFragment.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static FoodFragment newInstance(String param1, String param2) {
-        FoodFragment fragment = new FoodFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
+    LineGraphSeries<DataPoint> series;
+    LineGraphSeries<DataPoint> series1;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
+
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_food, container, false);
+
+        View view = inflater.inflate(R.layout.fragment_food, container, false);
+        double x,y;
+        x = -5.0;
+        GraphView graphView = (GraphView) view.findViewById(R.id.graphV1);
+        double x1,y1;
+        x1 = 0;
+        series = new LineGraphSeries<DataPoint>();
+        series1 = new LineGraphSeries<DataPoint>();
+        for (int i=0; i< 500; i++){
+            x +=1;
+            y=  5*x+1;
+            x1+=2;
+            y1 = 6*x+2;
+            series.appendData(new DataPoint(x,y),true,500);
+            series1.appendData(new DataPoint(x1,y1),true,500);
+        }
+        graphView.addSeries(series);
+        graphView.addSeries(series1);
+
+
+
+        return view;
+
     }
 }

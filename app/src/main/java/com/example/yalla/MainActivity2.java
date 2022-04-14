@@ -27,9 +27,6 @@ public class MainActivity2 extends AppCompatActivity {
 
         Intent intent = getIntent();
 
-        String email = intent.getStringExtra("email");
-        String password = intent.getStringExtra("password");
-
         binding = ActivityMain2Binding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
         
