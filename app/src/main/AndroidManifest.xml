@@ -11,11 +11,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light">
-        <activity
-            android:name=".MainActivity3"
-            android:exported="false"
-            android:label="@string/title_activity_main3"
-            android:theme="@style/NoActionBar" />
+        <activity android:name=".MainActivity3" />
         <activity android:name=".PhoneLogin" />
         <activity android:name=".verifyPhone" />
         <activity android:name=".MainActivity2" />
