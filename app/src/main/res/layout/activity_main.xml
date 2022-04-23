@@ -11,17 +11,8 @@
         android:layout_width="match_parent"
         android:layout_height="0dip"
         android:layout_weight="1"
-        android:gravity="center|bottom"
+        android:gravity="center"
         android:orientation="vertical">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="130dp"
-            android:gravity="center_horizontal"
-            android:text="Kopelman Personal Trainer"
-            android:textAlignment="center"
-            android:textColor="@color/black"
-            android:textSize="40dp" />
 
         <ImageView
             android:id="@+id/imageView3"

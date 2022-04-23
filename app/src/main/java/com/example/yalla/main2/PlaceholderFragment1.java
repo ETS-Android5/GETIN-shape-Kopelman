@@ -12,6 +12,7 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
+import com.example.yalla.databinding.FragmentMain2Binding;
 import com.example.yalla.databinding.FragmentMainBinding;
 
 /**
@@ -22,7 +23,7 @@ public class PlaceholderFragment1 extends Fragment {
     private static final String ARG_SECTION_NUMBER = "section_number";
 
     private PageViewModel1 pageViewModel;
-    private FragmentMainBinding binding;
+    private FragmentMain2Binding binding;
 
     public static PlaceholderFragment1 newInstance(int index) {
         PlaceholderFragment1 fragment = new PlaceholderFragment1();
@@ -48,10 +49,10 @@ public class PlaceholderFragment1 extends Fragment {
             @NonNull LayoutInflater inflater, ViewGroup container,
             Bundle savedInstanceState) {
 
-        binding = FragmentMainBinding.inflate(inflater, container, false);
+        binding = FragmentMain2Binding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
-        final TextView textView = binding.sectionLabel;
+        final TextView textView = binding.section2Label;
         pageViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
             @Override
             public void onChanged(@Nullable String s) {

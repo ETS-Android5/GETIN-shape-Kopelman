@@ -26,7 +26,7 @@ public class SectionsPagerAdapter1 extends FragmentPagerAdapter {
     FirebaseAuth firebaseAuth;
     FirebaseUser firebaseUser;
     @StringRes
-    private static final int[] TAB_TITLES = new int[]{R.string.tab_text_4, R.string.tab_text_5};
+    private static final int[] TAB_TITLES1 = new int[]{R.string.tab_text_4,R.string.tab_text_3};
     private final Context mContext;
 
     public SectionsPagerAdapter1(Context context, FragmentManager fm) {
@@ -46,7 +46,6 @@ public class SectionsPagerAdapter1 extends FragmentPagerAdapter {
                 break;
             case 1:
                 fragment = new infoFragment();
-                break;
         }
         return fragment;
     }
@@ -54,7 +53,7 @@ public class SectionsPagerAdapter1 extends FragmentPagerAdapter {
     @Nullable
     @Override
     public CharSequence getPageTitle(int position) {
-        return mContext.getResources().getString(TAB_TITLES[position]);
+        return mContext.getResources().getString(TAB_TITLES1[position]);
     }
 
     @Override

@@ -2,6 +2,7 @@ package com.example.yalla;
 
 import android.os.Bundle;
 
+import com.example.yalla.main2.SectionsPagerAdapter1;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.tabs.TabLayout;
@@ -27,9 +28,9 @@ public class MainActivity3 extends AppCompatActivity {
         binding = ActivityMain3Binding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        SectionsPagerAdapter sectionsPagerAdapter = new SectionsPagerAdapter(this, getSupportFragmentManager());
+        SectionsPagerAdapter1 SectionsPagerAdapter1 = new SectionsPagerAdapter1(this, getSupportFragmentManager());
         ViewPager viewPager = binding.viewPager1;
-        viewPager.setAdapter(sectionsPagerAdapter);
+        viewPager.setAdapter(SectionsPagerAdapter1);
         TabLayout tabs = binding.tabs1;
         tabs.setupWithViewPager(viewPager);
         FloatingActionButton fab = binding.fab1;

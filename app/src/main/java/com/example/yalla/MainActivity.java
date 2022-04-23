@@ -35,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
         btnAboutUS.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent it = new Intent(getApplicationContext(),MainActivity3.class);
+                Intent it = new Intent(getApplicationContext(),WelcomePage.class);
                 startActivity(it);
             }
         });

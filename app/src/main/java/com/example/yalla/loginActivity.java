@@ -103,7 +103,7 @@ public class loginActivity extends AppCompatActivity {
         startActivity(intent);
     }
     private void sendManagerToNextActivity() {
-        Intent intent = new Intent(loginActivity.this,PhoneLogin .class);
+        Intent intent = new Intent(loginActivity.this,MainActivity3 .class);
         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK| Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(intent);
     }
