@@ -7,8 +7,11 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -18,6 +21,8 @@ import java.util.HashMap;
 public class crud extends Fragment {
     EditText editName,editType,updateName,updateId,removeId,removeName;
     Button btnAdd,btnUpdate,btnRemove;
+    Spinner type,level;
+    String typeSelected, levelSelected;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -25,12 +30,43 @@ public class crud extends Fragment {
          View view =  inflater.inflate(R.layout.fragment_crud, container, false);
         DAOTworkout dao = new DAOTworkout();
         editName = view.findViewById(R.id.workOutName);
-         editType = view.findViewById(R.id.workOutType);
-         btnAdd = view.findViewById(R.id.btnAddWorkOut);
+        type = view.findViewById(R.id.spinnerAddType);
+        level = view.findViewById(R.id.spinnerAddLevel);
+        btnAdd = view.findViewById(R.id.btnAddWorkOut);
+
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getActivity(),R.array.types, android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_item);
+        type.setAdapter(adapter);
+         type.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+             @Override
+             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                typeSelected = parent.getItemAtPosition(position).toString();
+             }
+
+             @Override
+             public void onNothingSelected(AdapterView<?> parent) {
+                 typeSelected = parent.getItemAtPosition(0).toString();
+             }
+         });
+
+        ArrayAdapter<CharSequence> adapter1 = ArrayAdapter.createFromResource(getActivity(),R.array.levels, android.R.layout.simple_spinner_item);
+        adapter1.setDropDownViewResource(android.R.layout.simple_spinner_item);
+        level.setAdapter(adapter1);
+         level.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+             @Override
+             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                 levelSelected  = parent.getItemAtPosition(position).toString();
+             }
+
+             @Override
+             public void onNothingSelected(AdapterView<?> parent) {
+                 levelSelected = parent.getItemAtPosition(0).toString();
+             }
+         });
          btnAdd.setOnClickListener(new View.OnClickListener() {
              @Override
              public void onClick(View v) {
-                 Workout workout = new Workout(editName.getText().toString(),editType.getText().toString(),0);
+                 Workout workout = new Workout(editName.getText().toString(),typeSelected,0,levelSelected);
                 dao.add(workout).addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
                     public void onSuccess(Void unused) {

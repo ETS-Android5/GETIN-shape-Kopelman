@@ -4,13 +4,14 @@ public class Workout {
     private String name;
     private String type;
     private int countUsers;
-
+    private String level;
     public Workout(){}
 
-    public Workout(String name, String type, int countUsers) {
+    public Workout(String name, String type, int countUsers, String level) {
         this.name = name;
         this.type = type;
         this.countUsers = countUsers;
+        this.level = level;
     }
 
     public String getName() {
@@ -37,8 +38,11 @@ public class Workout {
         this.countUsers = countUsers;
     }
 
-    @Override
-    public String toString() {
-        return this.name + "," + this.type + "," + this.countUsers;
+    public String getLevel() {
+        return level;
+    }
+
+    public void setLevel(String level) {
+        this.level = level;
     }
 }
