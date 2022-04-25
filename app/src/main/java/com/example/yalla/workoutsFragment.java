@@ -56,12 +56,6 @@ public class workoutsFragment extends Fragment {
         databaseReference = FirebaseDatabase.getInstance().getReference("Workout");
         listView = (ListView) view.findViewById(R.id.list_item);
         arrayAdapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1,arrayList);
-//
-//        String value = "Name: " + snapshot.getValue(Workout.class).getName() + " , Type: " + snapshot.getValue(Workout.class).getType()
-//                + " , Users used: " + snapshot.getValue(Workout.class).getCountUsers();
-//        listView.setAdapter(arrayAdapter);
-//        arrayList.add(value);
-//        arrayAdapter.notifyDataSetChanged();
 
 
         spinner = view.findViewById(R.id.spinner);
@@ -79,7 +73,6 @@ public class workoutsFragment extends Fragment {
                     public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
                         if (snapshot.getValue(Workout.class).getType().equals(text)) {
                             String value = "Name: " + snapshot.getValue(Workout.class).getName() + " , Type: " + snapshot.getValue(Workout.class).getType()
-                                    + " , Users used: " + snapshot.getValue(Workout.class).getCountUsers()
                                     + " , Level: " + snapshot.getValue(Workout.class).getLevel();
                             listView.setAdapter(arrayAdapter);
                             arrayList.add(value);
@@ -116,6 +109,19 @@ public class workoutsFragment extends Fragment {
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
                 arrayList.clear();
+            }
+        });
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                if (position == 0){
+                    Intent it = new Intent(getActivity(),MainActivity.class);
+                    startActivity(it);
+                }
+                if (position == 1){
+                    Intent it = new Intent(getActivity(),WelcomePage.class);
+                    startActivity(it);
+                }
             }
         });
         return view;

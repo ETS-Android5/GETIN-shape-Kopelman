@@ -20,14 +20,14 @@
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
     <string name="title_activity_main3">MainActivity3</string>
 
-     <string-array name="types">
-         <item>ABS</item>
-         <item>BACK</item>
-         <item>BICEPS</item>
-         <item>CALF</item>
-         <item>CHEST</item>
-         <item>LEGS</item>
-     </string-array>
+    <string-array name="types">
+        <item>ABS</item>
+        <item>BACK</item>
+        <item>BICEPS</item>
+        <item>CALF</item>
+        <item>CHEST</item>
+        <item>LEGS</item>
+    </string-array>
 
     <string-array name="levels">
         <item>BEGINNER</item>
