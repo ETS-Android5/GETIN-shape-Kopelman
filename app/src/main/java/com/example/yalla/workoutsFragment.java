@@ -16,6 +16,7 @@ import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -32,10 +33,10 @@ import java.util.List;
 public class workoutsFragment extends Fragment {
 
     private ListView listView;
-    private String[] workouts = {"ABS", "BACK", "BICEPS", "CALF", "CHEST", "FOREARMS", "LEGS", "SHOULDERS", "TRICEPS"};
-    FirebaseDatabase firebaseDatabase;
     DatabaseReference databaseReference;
     ArrayList<String> arrayList = new ArrayList<>();
+    ArrayList<String>keysList = new ArrayList<>();
+    ArrayList<Integer> countList = new ArrayList<>();
     ArrayAdapter<String> arrayAdapter;
 
     @Override
@@ -49,16 +50,22 @@ public class workoutsFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_workouts, container, false);
+        databaseReference = FirebaseDatabase.getInstance().getReference("Workout");
         listView = (ListView) view.findViewById(R.id.list_item);
-
-        databaseReference = firebaseDatabase.getInstance().getReference("Workout");
-        arrayAdapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1);
+        arrayAdapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1,arrayList);
         listView.setAdapter(arrayAdapter);
+
+
+
         databaseReference.addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-                String value  = snapshot.getValue(Workout.class).toString();
+                String value = "Name: " + snapshot.getValue(Workout.class).getName() + " , Type: " + snapshot.getValue(Workout.class).getType()
+                                    + " , Users used: " + snapshot.getValue(Workout.class).getCountUsers()
+                                    + " , " + snapshot.getKey();
                 arrayList.add(value);
+                keysList.add((String) snapshot.getValue());
+                countList.add(snapshot.getValue(Workout.class).getCountUsers());
                 arrayAdapter.notifyDataSetChanged();
             }
 
@@ -69,12 +76,9 @@ public class workoutsFragment extends Fragment {
 
             @Override
             public void onChildRemoved(@NonNull DataSnapshot snapshot) {
-
             }
-
             @Override
             public void onChildMoved(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-
             }
 
             @Override
@@ -82,6 +86,8 @@ public class workoutsFragment extends Fragment {
 
             }
         });
+
+
         return view;
     }
 }
