@@ -72,8 +72,8 @@ public class workoutsFragment extends Fragment {
                     @Override
                     public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
                         if (snapshot.getValue(Workout.class).getType().equals(text)) {
-                            String value = "Name: " + snapshot.getValue(Workout.class).getName() + " , Type: " + snapshot.getValue(Workout.class).getType()
-                                    + " , Level: " + snapshot.getValue(Workout.class).getLevel();
+                            String value = snapshot.getValue(Workout.class).getName() + "-" + snapshot.getValue(Workout.class).getType()
+                                    + "-" + snapshot.getValue(Workout.class).getLevel();
                             listView.setAdapter(arrayAdapter);
                             arrayList.add(value);
                             arrayList.stream().sorted();
@@ -114,14 +114,15 @@ public class workoutsFragment extends Fragment {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                if (position == 0){
-                    Intent it = new Intent(getActivity(),MainActivity.class);
-                    startActivity(it);
-                }
-                if (position == 1){
-                    Intent it = new Intent(getActivity(),WelcomePage.class);
-                    startActivity(it);
-                }
+                Intent intent = new Intent(getActivity(), WorkoutInfo.class);
+                Bundle b = new Bundle();
+                String value = arrayList.get(position);
+                String [] arr = value.split("-");
+                b.putString("name", arr[0]); //name
+                b.putString("type",arr[1]); //type
+                b.putString("level",arr[2]);
+                intent.putExtras(b);
+                startActivity(intent);
             }
         });
         return view;

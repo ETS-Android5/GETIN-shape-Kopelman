@@ -34,5 +34,18 @@
         <item>INTERMEDIATE</item>
         <item>ADVANCED</item>
     </string-array>
+    
+    <string-array name="times">
+        <item>00:30</item>
+        <item>01:00</item>
+        <item>01:30</item>
+        <item>02:00</item>
+        <item>02:30</item>
+        <item>03:00</item>
+        <item>03:30</item>
+        <item>04:00</item>
+        <item>04:30</item>
+        <item>05:00</item>
+    </string-array>
 
 </resources>
