@@ -1,34 +1,31 @@
 package com.example.yalla;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.yalla.EmailList;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.ChildEventListener;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Objects;
+import java.util.HashSet;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Set;
 
 public class signUpActivity extends AppCompatActivity {
     private Button btnRegister;
@@ -37,7 +34,10 @@ public class signUpActivity extends AppCompatActivity {
     ProgressDialog progressDialog;
     FirebaseAuth firebaseAuth;
     FirebaseUser firebaseUser;
-    HashMap<String, String> mapEmails;
+
+    List<String> emailListList;
+    EmailList emailList = (EmailList) this.getApplication();
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,30 +54,45 @@ public class signUpActivity extends AppCompatActivity {
         firebaseAuth = FirebaseAuth.getInstance();
         firebaseUser = firebaseAuth.getCurrentUser();
 
+        emailListList = emailList.getEmailList();
+
         DAOUser dao = new DAOUser();
         DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("User");
-        DatabaseReference databaseReferenceEmail = databaseReference.child("User").child(inputEmail.getText().toString());
 
         btnRegister = findViewById(R.id.buttonAcount);
         btnRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 //PerformAuth();
+//                if (emailListList.contains(inputEmail.getText().toString()))
+//                    Toast.makeText(signUpActivity.this, "email already contains", Toast.LENGTH_SHORT).show();
+//                else {
+//                    Toast.makeText(signUpActivity.this, "email added", Toast.LENGTH_SHORT).show();
+//                    emailListList.add(inputEmail.getText().toString());
+//                }
+//                for (String email : emailListList) {
+//                    Toast.makeText(signUpActivity.this, email, Toast.LENGTH_SHORT).show();
+//                }
                 ArrayList<String> list = new ArrayList<>();
                 if (!(inputEmail.getText().toString().matches(emailPattern))) {
-                    inputEmail.setError("Enter propr email");
+                    inputEmail.setError("Enter proper email");
                 } else if (inputPassword.getText().toString().length() < 6) {
                     inputPassword.setError("Password too short");
-                }else{
-                    User user = new User(fullName.getText().toString(),inputEmail.getText().toString(),inputPassword.getText().toString(),list,"");
-                    dao.add(user).addOnSuccessListener(new OnSuccessListener<Void>() {
-                        @Override
-                        public void onSuccess(Void unused) {
-                            Toast.makeText(signUpActivity.this, "User created", Toast.LENGTH_SHORT).show();
-                            Intent it = new Intent(signUpActivity.this,loginActivity.class);
-                            startActivity(it);
-                        }
-                    });
+                } else {
+                    if (emailListList.isEmpty() || !(emailListList.contains(inputEmail.getText().toString()))) {
+                        emailListList.add(inputEmail.getText().toString());
+                        User user = new User(fullName.getText().toString(), inputEmail.getText().toString(), inputPassword.getText().toString(), list, "");
+                        dao.add(user).addOnSuccessListener(new OnSuccessListener<Void>() {
+                            @Override
+                            public void onSuccess(Void unused) {
+                                Toast.makeText(signUpActivity.this, "User created", Toast.LENGTH_SHORT).show();
+                                Intent it = new Intent(signUpActivity.this, loginActivity.class);
+                                startActivity(it);
+                            }
+                        });
+                    } else {
+                        Toast.makeText(signUpActivity.this, "email used", Toast.LENGTH_SHORT).show();
+                    }
                 }
             };
 
