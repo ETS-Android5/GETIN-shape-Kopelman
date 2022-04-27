@@ -58,16 +58,16 @@ public class infoFragment extends Fragment {
         firebaseAuth = FirebaseAuth.getInstance();
         firebaseUser = firebaseAuth.getCurrentUser();
 
-       mEmail.setText(mEmail.getText().toString() + " " + firebaseAuth.getCurrentUser().getEmail().toString());
-       mCreatedDate.setText("User ID: " + firebaseAuth.getUid().toString());
-       mDetail.setText(firebaseAuth.getCurrentUser().getPhoneNumber());
+//       mEmail.setText(mEmail.getText().toString() + " " + firebaseAuth.getCurrentUser().getEmail().toString());
+//       mCreatedDate.setText("User ID: " + firebaseAuth.getUid().toString());
+//       mDetail.setText(firebaseAuth.getCurrentUser().getPhoneNumber());
 
        btnLogout.setOnClickListener(new View.OnClickListener() {
            @Override
            public void onClick(View v) {
                Intent it = new Intent(getActivity(),MainActivity.class);
                Toast.makeText(getActivity(),"Logout",Toast.LENGTH_SHORT).show();
-               firebaseAuth.signOut();
+               //firebaseAuth.signOut();
                startActivity(it);
            }
        });
