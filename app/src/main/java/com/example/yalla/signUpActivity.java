@@ -18,8 +18,11 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -59,40 +62,53 @@ public class signUpActivity extends AppCompatActivity {
         DAOUser dao = new DAOUser();
         DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("User");
 
+        DAOEmail daoEmail = new DAOEmail();
+        DatabaseReference databaseReferenceEmail = FirebaseDatabase.getInstance().getReference("Email");
+
         btnRegister = findViewById(R.id.buttonAcount);
         btnRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 //PerformAuth();
-//                if (emailListList.contains(inputEmail.getText().toString()))
-//                    Toast.makeText(signUpActivity.this, "email already contains", Toast.LENGTH_SHORT).show();
-//                else {
-//                    Toast.makeText(signUpActivity.this, "email added", Toast.LENGTH_SHORT).show();
-//                    emailListList.add(inputEmail.getText().toString());
-//                }
-//                for (String email : emailListList) {
-//                    Toast.makeText(signUpActivity.this, email, Toast.LENGTH_SHORT).show();
-//                }
                 ArrayList<String> list = new ArrayList<>();
+                list.add("Not yet");
                 if (!(inputEmail.getText().toString().matches(emailPattern))) {
                     inputEmail.setError("Enter proper email");
                 } else if (inputPassword.getText().toString().length() < 6) {
                     inputPassword.setError("Password too short");
                 } else {
-                    if (emailListList.isEmpty() || !(emailListList.contains(inputEmail.getText().toString()))) {
-                        emailListList.add(inputEmail.getText().toString());
-                        User user = new User(fullName.getText().toString(), inputEmail.getText().toString(), inputPassword.getText().toString(), list, "");
-                        dao.add(user).addOnSuccessListener(new OnSuccessListener<Void>() {
-                            @Override
-                            public void onSuccess(Void unused) {
-                                Toast.makeText(signUpActivity.this, "User created", Toast.LENGTH_SHORT).show();
-                                Intent it = new Intent(signUpActivity.this, loginActivity.class);
-                                startActivity(it);
+                    String[] value = inputEmail.getText().toString().split("@");
+                    String key = value[0];
+                    databaseReferenceEmail.child("Email").child(key).addValueEventListener(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot snapshot) {
+                            if (snapshot.exists()) {
+                                Toast.makeText(signUpActivity.this, "email already exists!", Toast.LENGTH_SHORT).show();
+                            } else {
+                                daoEmail.add(inputEmail.getText().toString()).addOnSuccessListener(new OnSuccessListener<Void>() {
+                                    @Override
+                                    public void onSuccess(Void unused) {
+                                        Toast.makeText(signUpActivity.this, inputEmail.getText().toString() + " Added" , Toast.LENGTH_SHORT).show();
+                                    }
+                                });
+                                User user = new User(fullName.getText().toString(), inputEmail.getText().toString(), inputPassword.getText().toString(), list, "");
+                                dao.add(user).addOnSuccessListener(new OnSuccessListener<Void>() {
+                                    @Override
+                                    public void onSuccess(Void unused) {
+                                        Toast.makeText(signUpActivity.this, "User created", Toast.LENGTH_SHORT).show();
+                                        Intent it = new Intent(signUpActivity.this, loginActivity.class);
+                                        startActivity(it);
+                                    }
+                                });
                             }
-                        });
-                    } else {
-                        Toast.makeText(signUpActivity.this, "email used", Toast.LENGTH_SHORT).show();
-                    }
+                        }
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError error) {
+
+                        }
+                    });
+
                 }
             };
 

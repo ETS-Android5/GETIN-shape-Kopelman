@@ -5,7 +5,7 @@ import android.app.Application;
 import java.util.ArrayList;
 import java.util.List;
 
-public class EmailList extends Application {
+public class    EmailList extends Application {
     private static List<String> emailList = new ArrayList<>();
 
     public EmailList() {
