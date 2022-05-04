@@ -21,6 +21,9 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+
 import java.util.ArrayList;
 
 public class DoWorkout extends AppCompatActivity {
@@ -33,6 +36,10 @@ public class DoWorkout extends AppCompatActivity {
     Spinner spinner;
     private boolean timeRunning;
     private  ArrayList<String> arrayList = new ArrayList<>();
+
+    FirebaseAuth firebaseAuth;
+    FirebaseUser firebaseUser;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

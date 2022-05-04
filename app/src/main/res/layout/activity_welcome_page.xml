@@ -12,7 +12,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
-        android:text="Welocome!\nWe are happy you decided to use our app!\nHere in Kopelman Personal Trainer we will offer you\nThe BEST workout options for you!\nSpecial workouts, information and MORE!"
+        android:text="Welocome!\nWe are happy you decided to use our app!\nHere in KPT we will offer you\nThe BEST workout options for you!\nSpecial workouts, information and MORE!"
         android:textSize="25sp"
         android:textStyle="bold"
         android:textAlignment="center"

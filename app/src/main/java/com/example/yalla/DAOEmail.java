@@ -10,9 +10,12 @@ public class DAOEmail {
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         databaseReference = database.getReference("Email");
     }
-    public Task<Void> add(String email){
-        String[] pre = email.split("@");
-        databaseReference.child("Email").child(pre[0]).push();
-        return databaseReference.child("Email").child(pre[0]).setValue(email);
+        public Task<Void> add(String email){
+            String[] pre = email.split("@");
+            databaseReference.child("Email").child(pre[0]).push();
+            return databaseReference.child("Email").child(pre[0]).setValue(email);
+        }
+    public Task<Void> remove(String key){
+        return databaseReference.child(key).removeValue();
     }
 }

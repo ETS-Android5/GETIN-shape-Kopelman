@@ -14,6 +14,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light">
         <activity
+            android:name=".openPage"
+            android:exported="false" />
+        <activity
             android:name=".DoWorkout"
             android:exported="false" />
         <activity

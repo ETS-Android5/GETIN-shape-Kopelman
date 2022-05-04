@@ -16,7 +16,9 @@ public class DAOUser {
     public Task<Void> add(User user){
         if (user == null)
             return null;
-        return databaseReference.push().setValue(user);
+        String[] pre = user.getEmail().split("@");
+        databaseReference.child(pre[0]).push();
+        return databaseReference.child(pre[0]).setValue(user);
     }
     public Task<Void> update(String key, HashMap<String,Object> hashMap){
         return databaseReference.child(key).updateChildren(hashMap);

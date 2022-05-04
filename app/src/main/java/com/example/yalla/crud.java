@@ -28,7 +28,7 @@ public class crud extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view =  inflater.inflate(R.layout.fragment_crud, container, false);
-        DAOTworkout dao = new DAOTworkout();
+            DAOTworkout dao = new DAOTworkout();
         editName = view.findViewById(R.id.workOutName);
         type = view.findViewById(R.id.spinnerAddType);
         level = view.findViewById(R.id.spinnerAddLevel);

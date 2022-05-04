@@ -41,6 +41,7 @@ public class signUpActivity extends AppCompatActivity {
     List<String> emailListList;
     EmailList emailList = (EmailList) this.getApplication();
 
+    ArrayList<String> list = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,49 +70,8 @@ public class signUpActivity extends AppCompatActivity {
         btnRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //PerformAuth();
-                ArrayList<String> list = new ArrayList<>();
-                list.add("Not yet");
-                if (!(inputEmail.getText().toString().matches(emailPattern))) {
-                    inputEmail.setError("Enter proper email");
-                } else if (inputPassword.getText().toString().length() < 6) {
-                    inputPassword.setError("Password too short");
-                } else {
-                    String[] value = inputEmail.getText().toString().split("@");
-                    String key = value[0];
-                    databaseReferenceEmail.child("Email").child(key).addValueEventListener(new ValueEventListener() {
-                        @Override
-                        public void onDataChange(@NonNull DataSnapshot snapshot) {
-                            if (snapshot.exists()) {
-                                Toast.makeText(signUpActivity.this, "email already exists!", Toast.LENGTH_SHORT).show();
-                            } else {
-                                daoEmail.add(inputEmail.getText().toString()).addOnSuccessListener(new OnSuccessListener<Void>() {
-                                    @Override
-                                    public void onSuccess(Void unused) {
-                                        Toast.makeText(signUpActivity.this, inputEmail.getText().toString() + " Added" , Toast.LENGTH_SHORT).show();
-                                    }
-                                });
-                                User user = new User(fullName.getText().toString(), inputEmail.getText().toString(), inputPassword.getText().toString(), list, "");
-                                dao.add(user).addOnSuccessListener(new OnSuccessListener<Void>() {
-                                    @Override
-                                    public void onSuccess(Void unused) {
-                                        Toast.makeText(signUpActivity.this, "User created", Toast.LENGTH_SHORT).show();
-                                        Intent it = new Intent(signUpActivity.this, loginActivity.class);
-                                        startActivity(it);
-                                    }
-                                });
-                            }
-                        }
-
-                        @Override
-                        public void onCancelled(@NonNull DatabaseError error) {
-
-                        }
-                    });
-
-                }
-            };
-
+                 PerformAuth();
+            }
             private void PerformAuth() {
                 String email = inputEmail.getText().toString();
                 String password = inputPassword.getText().toString();
@@ -126,11 +86,20 @@ public class signUpActivity extends AppCompatActivity {
                     progressDialog.setCanceledOnTouchOutside(false);
                     progressDialog.show();
 
+                    list.add("Not yet");
+
                     firebaseAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             if (task.isSuccessful()) {
                                 progressDialog.dismiss();
+                                User user = new User(inputEmail.getText().toString(),list,"");
+                                dao.add(user).addOnSuccessListener(new OnSuccessListener<Void>() {
+                                    @Override
+                                    public void onSuccess(Void unused) {
+                                        Toast.makeText(signUpActivity.this, "added", Toast.LENGTH_SHORT).show();
+                                    }
+                                });
                                 sendUserToNextActivity();
                                 Toast.makeText(signUpActivity.this, "Registration Successful", Toast.LENGTH_SHORT).show();
                             } else {
