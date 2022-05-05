@@ -8,11 +8,9 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 
-import com.example.yalla.FoodFragment;
 import com.example.yalla.R;
-import com.example.yalla.crud;
-import com.example.yalla.infoFragment;
-import com.example.yalla.workoutsFragment;
+import com.example.yalla.AdminWorkoutFragment;
+import com.example.yalla.LogoutFragment;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
@@ -42,10 +40,10 @@ public class SectionsPagerAdapter1 extends FragmentPagerAdapter {
         Fragment fragment = null;
         switch (position){
             case 0:
-                fragment = new crud();
+                fragment = new AdminWorkoutFragment();
                 break;
             case 1:
-                fragment = new infoFragment();
+                fragment = new LogoutFragment();
         }
         return fragment;
     }

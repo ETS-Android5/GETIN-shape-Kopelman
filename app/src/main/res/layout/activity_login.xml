@@ -34,6 +34,8 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:text="NEXT"
+            android:textColor="@color/white"
+            android:background="@color/blueeee"
             android:textAllCaps="false" />
 
         <TextView
@@ -42,6 +44,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginTop="10dp"
+            android:textColor="@color/blueeee"
             android:text="Don't have an account? Get One Now!"
             android:textSize="20sp"
             android:textStyle="bold" />

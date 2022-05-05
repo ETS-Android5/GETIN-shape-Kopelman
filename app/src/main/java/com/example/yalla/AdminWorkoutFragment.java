@@ -18,7 +18,7 @@ import com.google.android.gms.tasks.OnSuccessListener;
 
 import java.util.HashMap;
 
-public class crud extends Fragment {
+public class AdminWorkoutFragment extends Fragment {
     EditText editName,editType,updateName,updateId,removeId,removeName;
     Button btnAdd,btnUpdate,btnRemove;
     Spinner type,level;
@@ -66,7 +66,7 @@ public class crud extends Fragment {
          btnAdd.setOnClickListener(new View.OnClickListener() {
              @Override
              public void onClick(View v) {
-                 Workout workout = new Workout(editName.getText().toString(),typeSelected,0,levelSelected);
+                 Workout workout = new Workout(editName.getText().toString(),typeSelected,"0",levelSelected);
                 dao.add(workout).addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
                     public void onSuccess(Void unused) {

@@ -17,7 +17,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-public class WelcomePage extends AppCompatActivity {
+public class AboutUs extends AppCompatActivity {
 
     private TextView textWelcome;
     private String value;

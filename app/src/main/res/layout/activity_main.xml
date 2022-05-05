@@ -26,23 +26,32 @@
             android:layout_width="145dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal|center"
+            android:layout_margin="10dp"
+            android:background="@color/blueeee"
+            android:textColor="@color/white"
             android:text="SIGN UP" />
 
         <Button
             android:id="@+id/button2"
+            android:layout_margin="10dp"
             style="?android:attr/buttonStyleSmall"
+            android:background="@color/blueeee"
+            android:textColor="@color/white"
             android:layout_width="145dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal|center"
             android:text="LOG IN" />
 
-        <Button
-            android:id="@+id/btnAboutUs"
-            style="?android:attr/buttonStyleSmall"
-            android:layout_width="145dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal|center"
-            android:text="ABOUT US" />
+<!--        <Button-->
+<!--            android:id="@+id/btnAboutUs"-->
+<!--            style="?android:attr/buttonStyleSmall"-->
+<!--            android:layout_width="145dp"-->
+<!--            android:layout_margin="10dp"-->
+<!--            android:background="@color/blueeee"-->
+<!--            android:textColor="@color/white"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_gravity="center_horizontal|center"-->
+<!--            android:text="ABOUT US" />-->
 
     </LinearLayout>
 

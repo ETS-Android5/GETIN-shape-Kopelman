@@ -3,11 +3,11 @@ package com.example.yalla;
 public class Workout {
     private String name;
     private String type;
-    private int countUsers;
+    private String countUsers;
     private String level;
     public Workout(){}
 
-    public Workout(String name, String type, int countUsers, String level) {
+    public Workout(String name, String type, String countUsers, String level) {
         this.name = name;
         this.type = type;
         this.countUsers = countUsers;
@@ -30,11 +30,11 @@ public class Workout {
         this.type = type;
     }
 
-    public int getCountUsers() {
+    public String getCountUsers() {
         return countUsers;
     }
 
-    public void setCountUsers(int countUsers) {
+    public void setCountUsers(String countUsers) {
         this.countUsers = countUsers;
     }
 

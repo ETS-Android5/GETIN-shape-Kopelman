@@ -28,7 +28,7 @@ public class WorkoutInfo extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        getSupportActionBar().hide();
         firebaseAuth = FirebaseAuth.getInstance();
         firebaseUser = firebaseAuth.getCurrentUser();
 
@@ -48,7 +48,7 @@ public class WorkoutInfo extends AppCompatActivity {
         btnBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent it = new Intent(getApplicationContext(),MainActivity2.class);
+                Intent it = new Intent(getApplicationContext(), UserMenu.class);
                 startActivity(it);
             }
         });

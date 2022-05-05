@@ -17,9 +17,12 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -34,14 +37,16 @@ import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 
-public class workoutsFragment extends Fragment {
+public class UserWorkoutFragment extends Fragment {
 
     private ListView listView;
     DatabaseReference databaseReference;
+    DatabaseReference databaseReference1;
     ArrayList<String> arrayList = new ArrayList<>();
     ArrayAdapter<String> arrayAdapter;
     Spinner spinner;
-
+    String name;
+    TextView textView;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -54,9 +59,15 @@ public class workoutsFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_workouts, container, false);
         databaseReference = FirebaseDatabase.getInstance().getReference("Workout");
+        databaseReference1 = FirebaseDatabase.getInstance().getReference("User");
+        FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
+        FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();
         listView = (ListView) view.findViewById(R.id.list_item);
         arrayAdapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1,arrayList);
-
+        textView = (TextView) view.findViewById(R.id.textView3);
+        String[] value = firebaseUser.getEmail().split("@");
+        String key = value[0];
+        textView.setText("Hi " + key + "! " + textView.getText().toString());
 
         spinner = view.findViewById(R.id.spinner);
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getActivity(),R.array.types, android.R.layout.simple_spinner_item);

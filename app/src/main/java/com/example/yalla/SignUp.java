@@ -11,26 +11,19 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.example.yalla.EmailList;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.LinkedList;
 import java.util.List;
-import java.util.Set;
 
-public class signUpActivity extends AppCompatActivity {
+public class SignUp extends AppCompatActivity {
     private Button btnRegister;
     EditText inputEmail, inputPassword, fullName;
     String emailPattern = "^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$";
@@ -39,7 +32,6 @@ public class signUpActivity extends AppCompatActivity {
     FirebaseUser firebaseUser;
 
     List<String> emailListList;
-    EmailList emailList = (EmailList) this.getApplication();
 
     ArrayList<String> list = new ArrayList<>();
 
@@ -47,6 +39,7 @@ public class signUpActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up);
+        getSupportActionBar().hide();
 
         fullName = findViewById(R.id.editName);
 
@@ -58,12 +51,10 @@ public class signUpActivity extends AppCompatActivity {
         firebaseAuth = FirebaseAuth.getInstance();
         firebaseUser = firebaseAuth.getCurrentUser();
 
-        emailListList = emailList.getEmailList();
 
         DAOUser dao = new DAOUser();
         DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("User");
 
-        DAOEmail daoEmail = new DAOEmail();
         DatabaseReference databaseReferenceEmail = FirebaseDatabase.getInstance().getReference("Email");
 
         btnRegister = findViewById(R.id.buttonAcount);
@@ -93,18 +84,18 @@ public class signUpActivity extends AppCompatActivity {
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             if (task.isSuccessful()) {
                                 progressDialog.dismiss();
-                                User user = new User(inputEmail.getText().toString(),list,"");
+                                User user = new User(inputEmail.getText().toString(),list,"",fullName.getText().toString());
                                 dao.add(user).addOnSuccessListener(new OnSuccessListener<Void>() {
                                     @Override
                                     public void onSuccess(Void unused) {
-                                        Toast.makeText(signUpActivity.this, "added", Toast.LENGTH_SHORT).show();
+                                        Toast.makeText(SignUp.this, "added", Toast.LENGTH_SHORT).show();
                                     }
                                 });
                                 sendUserToNextActivity();
-                                Toast.makeText(signUpActivity.this, "Registration Successful", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(SignUp.this, "Registration Successful", Toast.LENGTH_SHORT).show();
                             } else {
                                 progressDialog.dismiss();
-                                Toast.makeText(signUpActivity.this, "" + task.getException(), Toast.LENGTH_SHORT).show();
+                                Toast.makeText(SignUp.this, "" + task.getException(), Toast.LENGTH_SHORT).show();
                             }
                         }
                     });
@@ -114,7 +105,7 @@ public class signUpActivity extends AppCompatActivity {
     }
 
     private void sendUserToNextActivity() {
-        Intent intent = new Intent(getApplicationContext(), loginActivity.class);
+        Intent intent = new Intent(getApplicationContext(), Login.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
         intent.putExtra("Name", fullName.getText().toString());
         startActivity(intent);

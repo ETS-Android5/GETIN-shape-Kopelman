@@ -13,29 +13,27 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light">
-        <activity
-            android:name=".openPage"
-            android:exported="false" />
-        <activity
-            android:name=".DoWorkout"
-            android:exported="false" />
-        <activity
-            android:name=".WorkoutInfo"
-            android:exported="false" />
-        <activity android:name=".MainActivity3" />
-        <activity android:name=".PhoneLogin" />
-        <activity android:name=".verifyPhone" />
-        <activity android:name=".MainActivity2" />
-        <activity android:name=".WelcomePage" />
-        <activity android:name=".signUpActivity" />
-        <activity android:name=".loginActivity" />
-        <activity android:name=".MainActivity">
+        <activity android:name=".Open">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".DoWorkout"
+            android:exported="false" />
+        <activity
+            android:name=".WorkoutInfo"
+            android:exported="false" />
+        <activity android:name=".AdminMenu" />
+        <activity android:name=".PhoneLogin" />
+        <activity android:name=".VerifyCode" />
+        <activity android:name=".UserMenu" />
+        <activity android:name=".AboutUs" />
+        <activity android:name=".SignUp" />
+        <activity android:name=".Login" />
+        <activity android:name=".MainActivity"/>
     </application>
 
 </manifest>

@@ -1,9 +1,7 @@
 package com.example.yalla;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.FragmentTransaction;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
@@ -15,20 +13,14 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.ChildEventListener;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
-import java.util.HashMap;
-
-public class loginActivity extends AppCompatActivity {
+public class Login extends AppCompatActivity {
     private Button btnlogin;
     EditText inputEmail, inputPassword;
     String emailPattern = "^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$";
@@ -41,7 +33,7 @@ public class loginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-
+        getSupportActionBar().hide();
         inputEmail = findViewById(R.id.etemail);
         inputPassword = findViewById(R.id.mypass);
 
@@ -57,7 +49,7 @@ public class loginActivity extends AppCompatActivity {
         TosignUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent it = new Intent(loginActivity.this, signUpActivity.class);
+                Intent it = new Intent(Login.this, SignUp.class);
                 startActivity(it);
             }
         });
@@ -95,11 +87,11 @@ public class loginActivity extends AppCompatActivity {
                         if ((email.equals(managerEmail) || email.equals(managerEmail1)) && password.equals(managerPassword)) {
                             progressDialog.dismiss();
                             sendManagerToNextActivity();
-                            Toast.makeText(loginActivity.this, "Manager Login Successful", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(Login.this, "Manager Login Successful", Toast.LENGTH_SHORT).show();
                         } else {
                             progressDialog.dismiss();
                             sendUserToNextActivity();
-                            Toast.makeText(loginActivity.this, "Login Successful", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(Login.this, "Login Successful", Toast.LENGTH_SHORT).show();
                         }
                     }
                 }
@@ -108,13 +100,13 @@ public class loginActivity extends AppCompatActivity {
     }
 
             private void sendUserToNextActivity() {
-                Intent intent = new Intent(loginActivity.this, MainActivity2.class);
+                Intent intent = new Intent(Login.this, UserMenu.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
                 startActivity(intent);
             }
 
             private void sendManagerToNextActivity() {
-                Intent intent = new Intent(loginActivity.this, MainActivity3.class);
+                Intent intent = new Intent(Login.this, AdminMenu.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
                 startActivity(intent);
             }

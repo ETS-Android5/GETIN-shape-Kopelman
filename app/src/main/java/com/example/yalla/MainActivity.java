@@ -14,11 +14,12 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        getSupportActionBar().hide();
         btnSignUp = findViewById(R.id.button1);
         btnSignUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent it = new Intent(getApplicationContext(),signUpActivity.class);
+                Intent it = new Intent(getApplicationContext(), SignUp.class);
                 startActivity(it);
             }
         });
@@ -26,18 +27,18 @@ public class MainActivity extends AppCompatActivity {
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(),loginActivity.class);
+                Intent intent = new Intent(getApplicationContext(), Login.class);
                 startActivity(intent);
             }
         });
 
-        btnAboutUS = findViewById(R.id.btnAboutUs);
-        btnAboutUS.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent it = new Intent(getApplicationContext(),WelcomePage.class);
-                startActivity(it);
-            }
-        });
+//        btnAboutUS = findViewById(R.id.btnAboutUs);
+//        btnAboutUS.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent it = new Intent(getApplicationContext(),WelcomePage.class);
+//                startActivity(it);
+//            }
+//        });
     }
 }

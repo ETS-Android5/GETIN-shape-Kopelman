@@ -8,7 +8,7 @@ import android.os.Handler;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
-public class openPage extends AppCompatActivity {
+public class Open extends AppCompatActivity {
 
     private ProgressBar progressBar;
     private int progressStatus = 0;
@@ -35,7 +35,7 @@ public class openPage extends AppCompatActivity {
                             progressBar.setProgress(progressStatus);
                             textView.setText(progressStatus + "/" + progressBar.getMax());
                             if (progressStatus == 100) {
-                                Intent it = new Intent(openPage.this, MainActivity.class);
+                                Intent it = new Intent(Open.this, MainActivity.class);
                                 startActivity(it);
                             }
                         }

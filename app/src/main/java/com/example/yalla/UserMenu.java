@@ -16,18 +16,17 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.example.yalla.ui.main.SectionsPagerAdapter;
-import com.example.yalla.databinding.ActivityMain2Binding;
+import com.example.yalla.databinding.ActivityUserMenuBinding;
 
-public class MainActivity2 extends AppCompatActivity {
+public class UserMenu extends AppCompatActivity {
 
-    private ActivityMain2Binding binding;
+    private ActivityUserMenuBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-
-        binding = ActivityMain2Binding.inflate(getLayoutInflater());
+        getSupportActionBar().hide();
+        binding = ActivityUserMenuBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
         SectionsPagerAdapter sectionsPagerAdapter = new SectionsPagerAdapter(this, getSupportFragmentManager());
@@ -35,14 +34,6 @@ public class MainActivity2 extends AppCompatActivity {
         viewPager.setAdapter(sectionsPagerAdapter);
         TabLayout tabs = binding.tabs;
         tabs.setupWithViewPager(viewPager);
-        FloatingActionButton fab = binding.fab;
 
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
     }
 }

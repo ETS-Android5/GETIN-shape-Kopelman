@@ -2,31 +2,18 @@ package com.example.yalla;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.FirebaseException;
-import com.google.firebase.FirebaseTooManyRequestsException;
-import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
-import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.auth.PhoneAuthCredential;
-import com.google.firebase.auth.PhoneAuthOptions;
 import com.google.firebase.auth.PhoneAuthProvider;
 
-import java.util.concurrent.TimeUnit;
-
-public class verifyPhone extends AppCompatActivity {
+public class VerifyCode extends AppCompatActivity {
 
     private static final String TAG = "PhoneAuth";
 
@@ -49,6 +36,7 @@ public class verifyPhone extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_verify_phone);
+        getSupportActionBar().hide();
 
         codeText = (EditText) findViewById(R.id.editCode);
         verifyButton = (Button) findViewById(R.id.btnLet);
@@ -61,8 +49,8 @@ public class verifyPhone extends AppCompatActivity {
                 Intent it = getIntent();
                 String code = it.getStringExtra("code");
                 if (code.equals(codeText.getText().toString())){
-                    Intent it1 = new Intent(getApplicationContext(),MainActivity2.class);
-                    Toast.makeText(verifyPhone.this, "Login Completed", Toast.LENGTH_SHORT).show();
+                    Intent it1 = new Intent(getApplicationContext(), UserMenu.class);
+                    Toast.makeText(VerifyCode.this, "Login Completed", Toast.LENGTH_SHORT).show();
                     startActivity(it1);
                 }
             }

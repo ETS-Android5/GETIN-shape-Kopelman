@@ -15,17 +15,17 @@ import android.view.MenuItem;
 import android.view.View;
 
 import com.example.yalla.ui.main.SectionsPagerAdapter;
-import com.example.yalla.databinding.ActivityMain3Binding;
+import com.example.yalla.databinding.ActivityAdminMenuBinding;
 
-public class MainActivity3 extends AppCompatActivity {
+public class AdminMenu extends AppCompatActivity {
 
-    private ActivityMain3Binding binding;
+    private ActivityAdminMenuBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        binding = ActivityMain3Binding.inflate(getLayoutInflater());
+        getSupportActionBar().hide();
+        binding = ActivityAdminMenuBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
         SectionsPagerAdapter1 SectionsPagerAdapter1 = new SectionsPagerAdapter1(this, getSupportFragmentManager());
@@ -33,14 +33,5 @@ public class MainActivity3 extends AppCompatActivity {
         viewPager.setAdapter(SectionsPagerAdapter1);
         TabLayout tabs = binding.tabs1;
         tabs.setupWithViewPager(viewPager);
-        FloatingActionButton fab = binding.fab1;
-
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
     }
 }

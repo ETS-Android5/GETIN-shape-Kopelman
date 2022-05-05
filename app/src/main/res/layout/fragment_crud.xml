@@ -5,12 +5,15 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
+    android:gravity="center"
+    android:layout_gravity="center"
     android:orientation="vertical">
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Add Workout"
+        android:textColor="@color/blueeee"
         android:textAlignment="center"
         android:textSize="30dp"/>
 
@@ -24,10 +27,16 @@
     <Spinner
         android:id="@+id/spinnerAddType"
         android:layout_width="match_parent"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:textAlignment="center"
         android:layout_height="wrap_content" />
 
     <Spinner
         android:id="@+id/spinnerAddLevel"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:textAlignment="center"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
@@ -35,12 +44,15 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAlignment="center"
+        android:background="@color/blueeee"
+        android:textColor="@color/white"
         android:id="@+id/btnAddWorkOut"
         android:text="Add"/>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAlignment="center"
+        android:textColor="@color/blueeee"
         android:text="Update Workout Name"
         android:textSize="30dp"/>
     <EditText
@@ -59,12 +71,15 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/btnUpdateName"
+        android:background="@color/blueeee"
+        android:textColor="@color/white"
         android:text="Update"/>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAlignment="center"
         android:text="Remove by ID"
+        android:textColor="@color/blueeee"
         android:textSize="30dp"/>
     <EditText
         android:layout_width="wrap_content"
@@ -76,6 +91,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/btnRemoveName"
+        android:background="@color/blueeee"
+        android:textColor="@color/white"
         android:text="Remove"/>
 
     <ImageView
