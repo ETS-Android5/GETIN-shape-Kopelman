@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.yalla">
+    package="com.example.yalla" >
 
     <uses-permission android:name="android.permission.SEND_SMS" />
     <uses-permission android:name="android.permission.INTERNET" />
@@ -12,8 +12,10 @@
         android:label="Kopelman Personal Trainer"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.AppCompat.Light">
-
+        android:theme="@style/Theme.AppCompat.Light" >
+        <activity
+            android:name=".LastWorkoutDone"
+            android:exported="false" />
         <!--
              TODO: Before you run your application, you need a Google Maps API key.
 
@@ -29,7 +31,7 @@
             android:name="com.google.android.geo.API_KEY"
             android:value="YOUR_API_KEY" />
 
-        <activity android:name=".Open">
+        <activity android:name=".Open" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
