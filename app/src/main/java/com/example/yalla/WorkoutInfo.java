@@ -58,18 +58,11 @@ public class WorkoutInfo extends AppCompatActivity {
         btnGo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                HashMap<String,Object> hashMap = new HashMap<>();
-                ArrayList<String> arrayList = new ArrayList<>();
-                arrayList.add(txtName.getText().toString());
-                hashMap.put("workoutUsed", arrayList);
-                dao.update(key,hashMap).addOnSuccessListener(new OnSuccessListener<Void>() {
-                    @Override
-                    public void onSuccess(Void unused) {
-                        Toast.makeText(WorkoutInfo.this, "workout added", Toast.LENGTH_SHORT).show();
-                        Intent it = new Intent(getApplicationContext(),DoWorkout.class);
-                        startActivity(it);
-                    }
-                });
+                Intent it = new Intent(getApplicationContext(), DoWorkout.class);
+                Bundle b = new Bundle();
+                b.putString("workoutName", txtName.getText().toString());
+                it.putExtras(b);
+                startActivity(it);
             }
         });
     }

@@ -18,24 +18,24 @@
         android:textColor="@color/blueeee"
         android:textSize="25dp" />
 
-    <TextView
-        android:id="@+id/textView4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:gravity="center"
+    <Switch
+        android:id="@+id/switch1"
+        android:layout_width="200dp"
         android:layout_gravity="center"
-        android:text="New Runner? Get Some Tips Here:"
+        android:gravity="center"
+        android:layout_height="wrap_content"
         android:textColor="@color/blueeee"
-        android:textSize="25dp" />
+        android:textAlignment="center"
+        android:textSize="25dp"
+        android:text="New Runner?" />
 
     <TextView
         android:id="@+id/textView5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_gravity="center"
         android:layout_margin="10dp"
         android:gravity="center"
-        android:layout_gravity="center"
         android:text="@string/messageWithLink"
         android:textColor="@color/blueeee"
         android:textSize="25dp" />

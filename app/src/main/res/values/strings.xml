@@ -6,7 +6,7 @@
     <string name="tab_text_3">SIGN OUT</string>
     <string name="tab_text_4">CRUD</string>
 
-    <string name="messageWithLink"><a href="https://www.google.com/">Tap here to open Link</a></string>
+    <string name="messageWithLink"><a href="https://www.runtastic.com/blog/en/8-extremely-useful-running-tips-for-beginners/">Tap here to open Link</a></string>
 
     <string name="title_activity_main2">MainActivity2</string>
     <!-- TODO: Remove or change this placeholder text -->

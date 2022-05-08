@@ -12,8 +12,18 @@
 
         <TextView
             android:layout_width="wrap_content"
+            android:text="Workout Info"
+            android:textColor="@color/blueeee"
             android:layout_height="wrap_content"
-            android:text="Name"
+            android:id="@+id/headline"
+            android:layout_marginTop="40dp"
+            android:textSize="30dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:text="Hello"
+            android:textColor="@color/blueeee"
+            android:layout_height="wrap_content"
             android:id="@+id/name"
             android:layout_marginTop="40dp"
             android:textSize="30dp"/>
@@ -21,6 +31,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Type"
+            android:textColor="@color/blueeee"
             android:id="@+id/type"
             android:textSize="30dp"/>
 
@@ -28,6 +39,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="level"
+            android:textColor="@color/blueeee"
             android:id="@+id/level"
             android:textSize="30dp"/>
         <ImageView
@@ -37,13 +49,18 @@
 
         <Button
             android:id="@+id/IwantToDo"
+            android:background="@color/blueeee"
+            android:textColor="@color/white"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Do It" />
 
         <Button
             android:id="@+id/backToMain2"
+            android:background="@color/blueeee"
+            android:textColor="@color/white"
             android:layout_width="wrap_content"
+            android:layout_margin="10dp"
             android:layout_height="wrap_content"
             android:text="back" />
     </LinearLayout>

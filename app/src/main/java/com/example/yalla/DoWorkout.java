@@ -10,6 +10,9 @@ import android.app.Notification;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.content.Context;
+import android.content.Intent;
+import android.media.MediaPlayer;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.CountDownTimer;
@@ -17,9 +20,11 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.MediaController;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.widget.VideoView;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -36,16 +41,85 @@ public class DoWorkout extends AppCompatActivity {
     Spinner spinner;
     private boolean timeRunning;
     private  ArrayList<String> arrayList = new ArrayList<>();
-
+    private  MediaPlayer mediaPlayer;
     FirebaseAuth firebaseAuth;
     FirebaseUser firebaseUser;
+    private VideoView videoView;
+    private Button btnBack;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getSupportActionBar().hide();
+
+        mediaPlayer = MediaPlayer.create(this,R.raw.claps);
         setContentView(R.layout.activity_do_workout);
 
-        countDownText = findViewById(R.id.textView2);
+        btnBack = findViewById(R.id.button3);
+        btnBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent it = new Intent(getApplicationContext(),UserMenu.class);
+                startActivity(it);
+            }
+        });
+
+        Bundle b = getIntent().getExtras();
+        String workoutName = b.getString("workoutName").toString();
+        Toast.makeText(this, workoutName, Toast.LENGTH_SHORT).show();
+        videoView = findViewById(R.id.videoView);
+        if (workoutName.equals("Tuck and Crunch")){
+            String videoPath = "android.resource://" + getPackageName() + "/" + R.raw.truckandcrunch;
+            Uri uri = Uri.parse(videoPath);
+            videoView.setVideoURI(uri);
+            MediaController mediaController = new MediaController(this);
+            videoView.setMediaController(mediaController);
+            mediaController.setAnchorView(videoView);
+        }else if (workoutName.equals("Modified V-sit")){
+            String videoPath = "android.resource://" + getPackageName() + "/" + R.raw.vsit;
+            Uri uri = Uri.parse(videoPath);
+            videoView.setVideoURI(uri);
+            MediaController mediaController = new MediaController(this);
+            videoView.setMediaController(mediaController);
+            mediaController.setAnchorView(videoView);
+        }else if (workoutName.equals("Crunch")){
+            String videoPath = "android.resource://" + getPackageName() + "/" + R.raw.crunches;
+            Uri uri = Uri.parse(videoPath);
+            videoView.setVideoURI(uri);
+            MediaController mediaController = new MediaController(this);
+            videoView.setMediaController(mediaController);
+            mediaController.setAnchorView(videoView);
+        }else if (workoutName.equals("Seated Russian Twist")){
+            String videoPath = "android.resource://" + getPackageName() + "/" + R.raw.russiantwist;
+            Uri uri = Uri.parse(videoPath);
+            videoView.setVideoURI(uri);
+            MediaController mediaController = new MediaController(this);
+            videoView.setMediaController(mediaController);
+            mediaController.setAnchorView(videoView);
+        }else if (workoutName.equals("Bicycle Crunches")){
+            String videoPath = "android.resource://" + getPackageName() + "/" + R.raw.bycle;
+            Uri uri = Uri.parse(videoPath);
+            videoView.setVideoURI(uri);
+            MediaController mediaController = new MediaController(this);
+            videoView.setMediaController(mediaController);
+            mediaController.setAnchorView(videoView);
+        }else if (workoutName.equals("Plank")){
+            String videoPath = "android.resource://" + getPackageName() + "/" + R.raw.plank;
+            Uri uri = Uri.parse(videoPath);
+            videoView.setVideoURI(uri);
+            MediaController mediaController = new MediaController(this);
+            videoView.setMediaController(mediaController);
+            mediaController.setAnchorView(videoView);
+        }else if (workoutName.equals("Penguins")){
+            String videoPath = "android.resource://" + getPackageName() + "/" + R.raw.peng;
+            Uri uri = Uri.parse(videoPath);
+            videoView.setVideoURI(uri);
+            MediaController mediaController = new MediaController(this);
+            videoView.setMediaController(mediaController);
+            mediaController.setAnchorView(videoView);
+        }
+
+        countDownText = findViewById(R.id.textView7);
         btnGo = findViewById(R.id.btnGo);
 
         arrayList.add("00:30");
@@ -117,6 +191,7 @@ public class DoWorkout extends AppCompatActivity {
             }
         });
 
+
         btnGo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -158,6 +233,8 @@ public class DoWorkout extends AppCompatActivity {
 
                 NotificationManagerCompat managerCompat = NotificationManagerCompat.from(DoWorkout.this);
                 managerCompat.notify(1,builder.build());
+
+                mediaPlayer.start();
 
             }
         }.start();
