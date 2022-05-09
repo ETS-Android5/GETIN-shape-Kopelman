@@ -60,13 +60,21 @@ public class DoWorkout extends AppCompatActivity {
 
         Bundle b = getIntent().getExtras();
         String plan = b.getString("plan");
+        String name = b.getString("workoutName");
+        String type = b.getString("workoutType");
+        String level = b.getString("workoutLevel");
+
+
+        if (plan == null)
+            btnNext.setVisibility(View.GONE);
 
         btnNext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent it = new Intent(getApplicationContext(),PlansActivty.class);
-                Bundle b1 = new Bundle();
-                b1.putString("plan",plan);
+                Bundle b = new Bundle();
+                b.putString("plan",plan);
+                it.putExtras(b);
                 startActivity(it);
             }
         });
@@ -80,7 +88,6 @@ public class DoWorkout extends AppCompatActivity {
         });
 
         String workoutName = b.getString("workoutName").toString();
-        Toast.makeText(this, workoutName, Toast.LENGTH_SHORT).show();
         videoView = findViewById(R.id.videoView);
         if (workoutName.equals("Tuck and Crunch")){
             String videoPath = "android.resource://" + getPackageName() + "/" + R.raw.truckandcrunch;
@@ -163,7 +170,7 @@ public class DoWorkout extends AppCompatActivity {
                 else if (position == 1) {
                     countTimeLeftInMilestones = 60000;
                     countDownText.setText(arrayList.get(position));
-                }
+                    }
                 else if (position == 2) {
                     countTimeLeftInMilestones = 90000;
                     countDownText.setText(arrayList.get(position));

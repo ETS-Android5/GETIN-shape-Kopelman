@@ -16,7 +16,7 @@
         android:layout_margin="10dp"
         android:gravity="center"
         android:layout_gravity="center"
-        android:text="Choose Your Best Workout"
+        android:text="Choose Your Best Exercise"
         android:textColor="@color/blueeee"
         android:textSize="25dp" />
 

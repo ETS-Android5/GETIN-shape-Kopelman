@@ -29,11 +29,12 @@ public class WorkoutInfo extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getSupportActionBar().hide();
+        setContentView(R.layout.activity_workout_info);
+
         firebaseAuth = FirebaseAuth.getInstance();
         firebaseUser = firebaseAuth.getCurrentUser();
 
 
-        setContentView(R.layout.activity_workout_info);
         Bundle b = getIntent().getExtras();
         String plan = b.getString("plan");
         txtName = findViewById(R.id.name);
@@ -78,16 +79,13 @@ public class WorkoutInfo extends AppCompatActivity {
                         Intent it = new Intent(getApplicationContext(), DoWorkout.class);
                         Bundle b = new Bundle();
                         b.putString("workoutName", txtName.getText().toString());
+                        b.putString("workoutType", txtType.getText().toString());
+                        b.putString("workoutLevel",txtLevel.getText().toString());
+                        b.putString("plan",plan);
                         it.putExtras(b);
                         startActivity(it);
                     }
                 });
-                Intent it = new Intent(getApplicationContext(), DoWorkout.class);
-                Bundle b = new Bundle();
-                b.putString("workoutName", txtName.getText().toString());
-                b.putString("plan",plan);
-                it.putExtras(b);
-                startActivity(it);
             }
         });
     }

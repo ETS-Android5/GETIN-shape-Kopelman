@@ -14,6 +14,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
@@ -40,7 +41,6 @@ public class PlansActivty extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_plans_activty);
         getSupportActionBar().hide();
-
         Spinner levels = findViewById(R.id.spinner3);
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,R.array.levels, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_item);
@@ -48,6 +48,7 @@ public class PlansActivty extends AppCompatActivity {
         listView = findViewById(R.id.list_itemPlan);
         Bundle b = getIntent().getExtras();
         String plan = b.getString("plan");
+        Toast.makeText(this,plan, Toast.LENGTH_SHORT).show();
         TextView headline = findViewById(R.id.textView8);
         String[] types = plan.split(",");
         for (String type : types){
