@@ -3,7 +3,7 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Users/user/AndroidStudioProjects/Yalla/app/src/main/res/layout/activity_do_workout.xml" value="0.1" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/Yalla/app/src/main/res/layout/activity_do_workout.xml" value="0.264" />
         <entry key="..\:/Users/user/AndroidStudioProjects/Yalla/app/src/main/res/layout/activity_fragment.xml" value="0.11510416666666666" />
         <entry key="..\:/Users/user/AndroidStudioProjects/Yalla/app/src/main/res/layout/activity_graph_view.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/user/AndroidStudioProjects/Yalla/app/src/main/res/layout/activity_last_workout_done.xml" value="0.16799999999999998" />
@@ -14,11 +14,12 @@
         <entry key="..\:/Users/user/AndroidStudioProjects/Yalla/app/src/main/res/layout/activity_open.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/user/AndroidStudioProjects/Yalla/app/src/main/res/layout/activity_open_page.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/user/AndroidStudioProjects/Yalla/app/src/main/res/layout/activity_phone_login.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/Yalla/app/src/main/res/layout/activity_plans_activty.xml" value="0.11302083333333333" />
         <entry key="..\:/Users/user/AndroidStudioProjects/Yalla/app/src/main/res/layout/activity_sign_up.xml" value="0.176" />
         <entry key="..\:/Users/user/AndroidStudioProjects/Yalla/app/src/main/res/layout/activity_tab.xml" value="0.11510416666666666" />
         <entry key="..\:/Users/user/AndroidStudioProjects/Yalla/app/src/main/res/layout/activity_verify_phone.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/user/AndroidStudioProjects/Yalla/app/src/main/res/layout/activity_welcome_page.xml" value="0.4" />
-        <entry key="..\:/Users/user/AndroidStudioProjects/Yalla/app/src/main/res/layout/activity_workout_info.xml" value="0.1" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/Yalla/app/src/main/res/layout/activity_workout_info.xml" value="0.2" />
         <entry key="..\:/Users/user/AndroidStudioProjects/Yalla/app/src/main/res/layout/fragment1_layout.xml" value="0.11510416666666666" />
         <entry key="..\:/Users/user/AndroidStudioProjects/Yalla/app/src/main/res/layout/fragment2_layout.xml" value="0.11510416666666666" />
         <entry key="..\:/Users/user/AndroidStudioProjects/Yalla/app/src/main/res/layout/fragment3_layout.xml" value="0.11510416666666666" />

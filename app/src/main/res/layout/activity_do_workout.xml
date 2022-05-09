@@ -62,4 +62,15 @@
         android:gravity="center"
         android:text="BACK" />
 
+    <Button
+        android:id="@+id/btnNextEx"
+        android:layout_width="100dp"
+        android:background="@color/blueeee"
+        android:textColor="@color/white"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:layout_margin="10dp"
+        android:text="Next Exercise" />
+
 </LinearLayout>

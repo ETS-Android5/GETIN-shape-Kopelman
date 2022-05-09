@@ -45,7 +45,7 @@ public class DoWorkout extends AppCompatActivity {
     FirebaseAuth firebaseAuth;
     FirebaseUser firebaseUser;
     private VideoView videoView;
-    private Button btnBack;
+    private Button btnBack, btnNext;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,6 +56,21 @@ public class DoWorkout extends AppCompatActivity {
         setContentView(R.layout.activity_do_workout);
 
         btnBack = findViewById(R.id.button3);
+        btnNext = findViewById(R.id.btnNextEx);
+
+        Bundle b = getIntent().getExtras();
+        String plan = b.getString("plan");
+
+        btnNext.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent it = new Intent(getApplicationContext(),PlansActivty.class);
+                Bundle b1 = new Bundle();
+                b1.putString("plan",plan);
+                startActivity(it);
+            }
+        });
+
         btnBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -64,7 +79,6 @@ public class DoWorkout extends AppCompatActivity {
             }
         });
 
-        Bundle b = getIntent().getExtras();
         String workoutName = b.getString("workoutName").toString();
         Toast.makeText(this, workoutName, Toast.LENGTH_SHORT).show();
         videoView = findViewById(R.id.videoView);

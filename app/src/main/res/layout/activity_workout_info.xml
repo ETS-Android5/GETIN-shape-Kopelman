@@ -42,9 +42,10 @@
             android:textColor="@color/blueeee"
             android:id="@+id/level"
             android:textSize="30dp"/>
+
         <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="300dp"
+            android:layout_height="300dp"
             app:srcCompat="@drawable/logo"/>
 
         <Button
@@ -63,5 +64,6 @@
             android:layout_margin="10dp"
             android:layout_height="wrap_content"
             android:text="back" />
+
     </LinearLayout>
 </androidx.cardview.widget.CardView>

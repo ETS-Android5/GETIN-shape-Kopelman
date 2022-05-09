@@ -59,4 +59,52 @@
         android:layout_gravity="center"
         android:gravity="center"
         android:text="No" />
+
+    <TextView
+        android:id="@+id/textView10"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/blueeee"
+        android:textSize="30dp"
+        android:textAlignment="center"
+        android:text="Select Your Workout Plan" />
+
+    <Spinner
+        android:id="@+id/spinner2"
+        android:layout_margin="10dp"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <Button
+        android:id="@+id/button10"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:background="@color/blueeee"
+        android:textColor="@color/white"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:text="DO IT" />
+
+    <TextView
+        android:id="@+id/textView11"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="No Thanks I Want To Do Just Exercises"
+        android:textAlignment="center"
+        android:textColor="@color/blueeee"
+        android:textSize="30dp" />
+
+    <Button
+        android:id="@+id/button8"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_margin="10dp"
+        android:background="@color/blueeee"
+        android:gravity="center"
+        android:text="DO IT"
+        android:textColor="@color/white" />
+
 </LinearLayout>
