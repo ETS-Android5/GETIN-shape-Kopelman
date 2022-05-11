@@ -19,7 +19,7 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import java.util.HashMap;
 
 public class AdminWorkoutFragment extends Fragment {
-    EditText editName,editType,updateName,updateId,removeId,removeName;
+    EditText editName,editType,updateName,updateId,removeId,removeName,editYoutubeID;
     Button btnAdd,btnUpdate,btnRemove;
     Spinner type,level;
     String typeSelected, levelSelected;
@@ -28,11 +28,14 @@ public class AdminWorkoutFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view =  inflater.inflate(R.layout.fragment_crud, container, false);
-            DAOTworkout dao = new DAOTworkout();
+        DAOTworkout dao = new DAOTworkout();
         editName = view.findViewById(R.id.workOutName);
         type = view.findViewById(R.id.spinnerAddType);
         level = view.findViewById(R.id.spinnerAddLevel);
         btnAdd = view.findViewById(R.id.btnAddWorkOut);
+
+        editYoutubeID = view.findViewById(R.id.editYoutubeId);
+        String youtubeID = editYoutubeID.getText().toString();
 
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getActivity(),R.array.types, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_item);
@@ -66,7 +69,7 @@ public class AdminWorkoutFragment extends Fragment {
          btnAdd.setOnClickListener(new View.OnClickListener() {
              @Override
              public void onClick(View v) {
-                 Workout workout = new Workout(editName.getText().toString(),typeSelected,"0",levelSelected);
+                 Workout workout = new Workout(editName.getText().toString(),typeSelected,levelSelected,editYoutubeID.getText().toString());
                 dao.add(workout).addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
                     public void onSuccess(Void unused) {

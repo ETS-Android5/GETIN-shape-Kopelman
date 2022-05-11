@@ -40,6 +40,15 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
+    <EditText
+        android:id="@+id/editYoutubeId"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="15"
+        android:inputType="textPersonName"
+        android:textAlignment="center"
+        android:hint="Enter Youtube ID" />
+
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

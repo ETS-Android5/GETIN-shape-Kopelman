@@ -16,9 +16,7 @@ public class DAOTworkout
     public Task<Void> add(Workout workout){
         if (workout == null)
             return null;
-        databaseReference.child(workout.getType().toString()).push();
-        return databaseReference.child(workout.getType().toString()).setValue(workout);
-
+        return databaseReference.push().setValue(workout);
     }
     public Task<Void> update(String key, HashMap<String,Object> hashMap){
         return databaseReference.child(key).updateChildren(hashMap);

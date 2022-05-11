@@ -27,6 +27,7 @@ public class SignUp extends AppCompatActivity {
     private Button btnRegister;
     EditText inputEmail, inputPassword, fullName;
     String emailPattern = "^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$";
+    String fullNamePattern = "^[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*$";
     ProgressDialog progressDialog;
     FirebaseAuth firebaseAuth;
     FirebaseUser firebaseUser;
@@ -64,11 +65,13 @@ public class SignUp extends AppCompatActivity {
                  PerformAuth();
             }
             private void PerformAuth() {
+                String fullname = fullName.getText().toString();
                 String email = inputEmail.getText().toString();
                 String password = inputPassword.getText().toString();
-
-                if (!email.matches(emailPattern)) {
-                    inputEmail.setError("Enterr current Email");
+                if (!fullname.matches(fullNamePattern)) {
+                    fullName.setError("Enter Proper Full Name");
+                } else if (!email.matches(emailPattern)) {
+                    inputEmail.setError("Enter Proper Email");
                 } else if (password.isEmpty() || password.length() < 6) {
                     inputPassword.setError("Enter Proper Password");
                 } else {
@@ -76,7 +79,6 @@ public class SignUp extends AppCompatActivity {
                     progressDialog.setTitle("Registration");
                     progressDialog.setCanceledOnTouchOutside(false);
                     progressDialog.show();
-
                     list.add("Not yet");
 
                     firebaseAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
@@ -84,7 +86,7 @@ public class SignUp extends AppCompatActivity {
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             if (task.isSuccessful()) {
                                 progressDialog.dismiss();
-                                User user = new User(inputEmail.getText().toString(),list,"",fullName.getText().toString());
+                                User user = new User(inputEmail.getText().toString(),list,fullName.getText().toString(),"0");
                                 dao.add(user).addOnSuccessListener(new OnSuccessListener<Void>() {
                                     @Override
                                     public void onSuccess(Void unused) {

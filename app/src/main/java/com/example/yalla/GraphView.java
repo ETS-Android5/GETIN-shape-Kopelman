@@ -25,16 +25,13 @@ public class GraphView extends AppCompatActivity {
         double x1,y1;
         x1 = 0;
         series = new LineGraphSeries<DataPoint>();
-        series1 = new LineGraphSeries<DataPoint>();
         for (int i=0; i< 500; i++){
             x +=1;
             y=  5*x+1;
             x1+=2;
             y1 = 6*x+2;
             series.appendData(new DataPoint(x,y),true,500);
-            series1.appendData(new DataPoint(x1,y1),true,500);
         }
         graphView.addSeries(series);
-        graphView.addSeries(series1);
     }
 }

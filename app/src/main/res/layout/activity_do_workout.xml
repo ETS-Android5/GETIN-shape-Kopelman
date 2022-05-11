@@ -45,13 +45,12 @@
         android:textColor="@color/white"
         android:text="START" />
 
-    <VideoView
-        android:id="@+id/videoView"
-        android:layout_margin="20dp"
+    <com.google.android.youtube.player.YouTubePlayerView
         android:layout_width="300dp"
+        android:layout_height="300dp"
+        android:layout_margin="10dp"
         android:layout_gravity="center"
-        android:layout_height="300dp" />
-
+        android:id="@+id/youtube_player_view"/>
     <Button
         android:id="@+id/button3"
         android:layout_width="100dp"

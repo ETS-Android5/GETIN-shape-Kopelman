@@ -1,5 +1,7 @@
 package com.example.yalla;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.NotificationCompat;
@@ -17,6 +19,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.view.View;
+import android.view.accessibility.AccessibilityEvent;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -26,12 +29,22 @@ import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.VideoView;
 
+import com.google.android.youtube.player.YouTubeBaseActivity;
+import com.google.android.youtube.player.YouTubeInitializationResult;
+import com.google.android.youtube.player.YouTubePlayer;
+import com.google.android.youtube.player.YouTubePlayerView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
-public class DoWorkout extends AppCompatActivity {
+public class DoWorkout extends YouTubeBaseActivity {
 
     private TextView countDownText;
     private Button btnGo;
@@ -42,17 +55,17 @@ public class DoWorkout extends AppCompatActivity {
     private boolean timeRunning;
     private  ArrayList<String> arrayList = new ArrayList<>();
     private  MediaPlayer mediaPlayer;
-    FirebaseAuth firebaseAuth;
-    FirebaseUser firebaseUser;
     private VideoView videoView;
     private Button btnBack, btnNext;
-
+    private YouTubePlayerView youTubePlayerView;
+  
+    @SuppressLint("WrongViewCast")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        getSupportActionBar().hide();
+        //getSupportActionBar().hide();
 
-        mediaPlayer = MediaPlayer.create(this,R.raw.claps);
+        mediaPlayer = MediaPlayer.create(this, R.raw.claps);
         setContentView(R.layout.activity_do_workout);
 
         btnBack = findViewById(R.id.button3);
@@ -64,6 +77,53 @@ public class DoWorkout extends AppCompatActivity {
         String type = b.getString("workoutType");
         String level = b.getString("workoutLevel");
 
+        DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("Workout");
+
+
+        youTubePlayerView = findViewById(R.id.youtube_player_view);
+
+        databaseReference.addChildEventListener(new ChildEventListener() {
+            @Override
+            public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+                if (snapshot.getValue(Workout.class).getName().equals(name)){
+                    String id = snapshot.getValue(Workout.class).getVideoId();
+                    //  Toast.makeText(DoWorkout.this, id, Toast.LENGTH_SHORT).show();
+                    YouTubePlayer.OnInitializedListener listener = new YouTubePlayer.OnInitializedListener() {
+                        @Override
+                        public void onInitializationSuccess(YouTubePlayer.Provider provider, YouTubePlayer youTubePlayer, boolean b) {
+                            youTubePlayer.loadVideo(id);
+                            youTubePlayer.play();
+                        }
+
+                        @Override
+                        public void onInitializationFailure(YouTubePlayer.Provider provider, YouTubeInitializationResult youTubeInitializationResult) {
+
+                        }
+                    };
+                    youTubePlayerView.initialize("AIzaSyDsBjdkdehETODJwAslBpnKH1zFXHW_xJM",listener);
+                }
+            }
+
+            @Override
+            public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+
+            }
+
+            @Override
+            public void onChildRemoved(@NonNull DataSnapshot snapshot) {
+
+            }
+
+            @Override
+            public void onChildMoved(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
 
         if (plan == null)
             btnNext.setVisibility(View.GONE);
@@ -88,57 +148,6 @@ public class DoWorkout extends AppCompatActivity {
         });
 
         String workoutName = b.getString("workoutName").toString();
-        videoView = findViewById(R.id.videoView);
-        if (workoutName.equals("Tuck and Crunch")){
-            String videoPath = "android.resource://" + getPackageName() + "/" + R.raw.truckandcrunch;
-            Uri uri = Uri.parse(videoPath);
-            videoView.setVideoURI(uri);
-            MediaController mediaController = new MediaController(this);
-            videoView.setMediaController(mediaController);
-            mediaController.setAnchorView(videoView);
-        }else if (workoutName.equals("Modified V-sit")){
-            String videoPath = "android.resource://" + getPackageName() + "/" + R.raw.vsit;
-            Uri uri = Uri.parse(videoPath);
-            videoView.setVideoURI(uri);
-            MediaController mediaController = new MediaController(this);
-            videoView.setMediaController(mediaController);
-            mediaController.setAnchorView(videoView);
-        }else if (workoutName.equals("Crunch")){
-            String videoPath = "android.resource://" + getPackageName() + "/" + R.raw.crunches;
-            Uri uri = Uri.parse(videoPath);
-            videoView.setVideoURI(uri);
-            MediaController mediaController = new MediaController(this);
-            videoView.setMediaController(mediaController);
-            mediaController.setAnchorView(videoView);
-        }else if (workoutName.equals("Seated Russian Twist")){
-            String videoPath = "android.resource://" + getPackageName() + "/" + R.raw.russiantwist;
-            Uri uri = Uri.parse(videoPath);
-            videoView.setVideoURI(uri);
-            MediaController mediaController = new MediaController(this);
-            videoView.setMediaController(mediaController);
-            mediaController.setAnchorView(videoView);
-        }else if (workoutName.equals("Bicycle Crunches")){
-            String videoPath = "android.resource://" + getPackageName() + "/" + R.raw.bycle;
-            Uri uri = Uri.parse(videoPath);
-            videoView.setVideoURI(uri);
-            MediaController mediaController = new MediaController(this);
-            videoView.setMediaController(mediaController);
-            mediaController.setAnchorView(videoView);
-        }else if (workoutName.equals("Plank")){
-            String videoPath = "android.resource://" + getPackageName() + "/" + R.raw.plank;
-            Uri uri = Uri.parse(videoPath);
-            videoView.setVideoURI(uri);
-            MediaController mediaController = new MediaController(this);
-            videoView.setMediaController(mediaController);
-            mediaController.setAnchorView(videoView);
-        }else if (workoutName.equals("Penguins")){
-            String videoPath = "android.resource://" + getPackageName() + "/" + R.raw.peng;
-            Uri uri = Uri.parse(videoPath);
-            videoView.setVideoURI(uri);
-            MediaController mediaController = new MediaController(this);
-            videoView.setMediaController(mediaController);
-            mediaController.setAnchorView(videoView);
-        }
 
         countDownText = findViewById(R.id.textView7);
         btnGo = findViewById(R.id.btnGo);

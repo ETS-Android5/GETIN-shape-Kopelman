@@ -68,7 +68,7 @@ public class PlansActivty extends AppCompatActivity {
                     @RequiresApi(api = Build.VERSION_CODES.N)
                     @Override
                     public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-                        if (listTypes.contains(snapshot.getKey()) && snapshot.getValue(Workout.class).getLevel().equals(level)) {
+                        if (listTypes.contains(snapshot.getValue(Workout.class).getType()) && snapshot.getValue(Workout.class).getLevel().equals(level)) {
                             String value = snapshot.getValue(Workout.class).getName() + "-" + snapshot.getValue(Workout.class).getType()
                                     + "-" + snapshot.getValue(Workout.class).getLevel();
                             listView.setAdapter(arrayAdapter);

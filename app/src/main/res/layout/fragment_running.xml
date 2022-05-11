@@ -14,20 +14,20 @@
         android:layout_margin="10dp"
         android:gravity="center"
         android:layout_gravity="center"
-        android:text="Running Is Perfect"
+        android:text="Running Is Perfect!"
         android:textColor="@color/blueeee"
         android:textSize="25dp" />
 
-    <Switch
-        android:id="@+id/switch1"
-        android:layout_width="200dp"
-        android:layout_gravity="center"
-        android:gravity="center"
+    <TextView
+        android:id="@+id/textView12"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_margin="10dp"
+        android:gravity="center"
+        android:text="Get Some Running Tips"
         android:textColor="@color/blueeee"
-        android:textAlignment="center"
-        android:textSize="25dp"
-        android:text="New Runner?" />
+        android:textSize="25dp" />
 
     <TextView
         android:id="@+id/textView5"
@@ -40,4 +40,42 @@
         android:textColor="@color/blueeee"
         android:textSize="25dp" />
 
+    <TextView
+        android:id="@+id/textView14"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_margin="10dp"
+        android:gravity="center"
+        android:text="Enter Your Current Running Distance in km"
+        android:textColor="@color/blueeee"
+        android:textSize="25dp"/>
+
+    <EditText
+        android:id="@+id/editTextNumber"
+        android:layout_width="200dp"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Enter Distance"
+        android:textAlignment="center"
+        android:inputType="number" />
+
+    <Button
+        android:id="@+id/btnShow"
+        android:layout_width="100dp"
+        android:background="@color/blueeee"
+        android:textColor="@color/white"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:layout_height="wrap_content"
+        android:text="Check the Graph" />
+
+    <com.jjoe64.graphview.GraphView
+        android:layout_margin="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/graphV1"
+        android:visibility="invisible"/>
 </LinearLayout>

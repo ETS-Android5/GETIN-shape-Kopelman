@@ -44,16 +44,17 @@ public class LastWorkoutDone extends AppCompatActivity {
         String [] values = firebaseUser.getEmail().split("@");
         String key = values[0];
 
+
         databaseReference.child(key).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                if (snapshot.getValue(User.class).getWorkoutUsed().get(0).equals("Not yet")) {
+                if (snapshot.getValue(User.class).getLastworkoutUsed().get(0).equals("Not yet")) {
                     txtWorkout.setText("You Haven't Done Any Workout YET!");
                     txtDoAgain.setVisibility(View.GONE);
                     btnYes.setVisibility(View.GONE);
                     btnNo.setText("Do Your First One");
                 }
-                txtWorkout.setText(snapshot.getValue(User.class).getWorkoutUsed().get(0));
+                txtWorkout.setText(snapshot.getValue(User.class).getLastworkoutUsed().get(0));
             }
 
             @Override

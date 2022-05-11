@@ -4,25 +4,18 @@ import java.util.ArrayList;
 
 public class User {
     private String email;
-    private ArrayList<String> workoutUsed;
-    private String favouriteWorkType;
+    private ArrayList<String> lastworkoutUsed;
     private String fullname;
+    private String totalKM;
 
-    public User(){}
+    public User() {
+    }
 
-    public User(String email, ArrayList<String> workoutUsed, String favouriteWorkType, String fullname) {
+    public User(String email, ArrayList<String> lastworkoutUsed, String fullname, String totalKM) {
         this.email = email;
-        this.workoutUsed = workoutUsed;
-        this.favouriteWorkType = favouriteWorkType;
+        this.lastworkoutUsed = lastworkoutUsed;
         this.fullname = fullname;
-    }
-
-    public String getFullname() {
-        return fullname;
-    }
-
-    public void setFullname(String fullname) {
-        this.fullname = fullname;
+        this.totalKM = totalKM;
     }
 
     public String getEmail() {
@@ -33,21 +26,27 @@ public class User {
         this.email = email;
     }
 
-    public ArrayList<String> getWorkoutUsed() {
-        return workoutUsed;
+    public ArrayList<String> getLastworkoutUsed() {
+        return lastworkoutUsed;
     }
 
-    public void setWorkoutUsed(ArrayList<String> workoutUsed) {
-        this.workoutUsed = workoutUsed;
+    public void setLastworkoutUsed(ArrayList<String> lastworkoutUsed) {
+        this.lastworkoutUsed = lastworkoutUsed;
     }
 
-    public String getFavouriteWorkType() {
-        return favouriteWorkType;
+    public String getFullname() {
+        return fullname;
     }
 
-    public void setFavouriteWorkType(String favouriteWorkType) {
-        this.favouriteWorkType = favouriteWorkType;
+    public void setFullname(String fullname) {
+        this.fullname = fullname;
     }
 
+    public String getTotalKM() {
+        return totalKM;
+    }
+
+    public void setTotalKM(String totalKM) {
+        this.totalKM = totalKM;
+    }
 }
-

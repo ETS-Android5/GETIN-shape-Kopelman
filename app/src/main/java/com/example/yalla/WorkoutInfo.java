@@ -72,7 +72,7 @@ public class WorkoutInfo extends AppCompatActivity {
                 HashMap<String,Object> hashMap = new HashMap<>();
                 ArrayList<String> arrayList = new ArrayList<>();
                 arrayList.add(txtName.getText().toString());
-                hashMap.put("workoutUsed",arrayList);
+                hashMap.put("lastworkoutUsed",arrayList);
                 dao.update(key,hashMap).addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
                     public void onSuccess(Void unused) {

@@ -3,15 +3,15 @@ package com.example.yalla;
 public class Workout {
     private String name;
     private String type;
-    private String countUsers;
     private String level;
+    private String videoId;
     public Workout(){}
 
-    public Workout(String name, String type, String countUsers, String level) {
+    public Workout(String name, String type, String level, String videoId) {
         this.name = name;
         this.type = type;
-        this.countUsers = countUsers;
         this.level = level;
+        this.videoId = videoId;
     }
 
     public String getName() {
@@ -30,19 +30,19 @@ public class Workout {
         this.type = type;
     }
 
-    public String getCountUsers() {
-        return countUsers;
-    }
-
-    public void setCountUsers(String countUsers) {
-        this.countUsers = countUsers;
-    }
-
     public String getLevel() {
         return level;
     }
 
     public void setLevel(String level) {
         this.level = level;
+    }
+
+    public String getVideoId() {
+        return videoId;
+    }
+
+    public void setVideoId(String videoId) {
+        this.videoId = videoId;
     }
 }

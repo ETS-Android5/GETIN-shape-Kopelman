@@ -14,9 +14,9 @@
         android:layout_gravity="center"
         android:gravity="center"
         android:layout_height="wrap_content"
-        android:text="Click Here to Log Out"
+        android:layout_margin="40dp"
+        android:text="Click Here To Logout"
         android:textColor="@color/blueeee"
-        android:layout_marginTop="50dp"
         android:textSize="40dp"/>
 
     <Button
@@ -24,7 +24,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_marginTop="20dp"
         android:background="@color/blueeee"
         android:gravity="center"
         android:text="LOGOUT"
