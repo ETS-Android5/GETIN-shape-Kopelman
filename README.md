@@ -2,8 +2,6 @@
 
 My first Android Application
 
-I made the app on Android Studio IDE 
-
 I used Java for backend and used Firebase as my realtime database.
 
 Feel free to take a look in my code!
