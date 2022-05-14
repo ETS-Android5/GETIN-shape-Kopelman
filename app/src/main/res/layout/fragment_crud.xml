@@ -104,9 +104,4 @@
         android:textColor="@color/white"
         android:text="Remove"/>
 
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:src="@drawable/logo" />
 </LinearLayout>

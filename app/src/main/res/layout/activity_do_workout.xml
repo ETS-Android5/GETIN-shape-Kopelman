@@ -10,7 +10,7 @@
     <TextView
         android:id="@+id/textView2"
         android:layout_margin="30dp"
-        android:textColor="@color/blueeee"
+        android:textColor="@color/bordoyoter"
         android:textSize="30dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -30,7 +30,7 @@
         android:textSize="30dp"
         android:layout_gravity="center"
         android:gravity="center"
-        android:textColor="@color/blueeee"
+        android:textColor="@color/bordoyoter"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="00:30" />
@@ -41,7 +41,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:gravity="center"
-        android:background="@color/blueeee"
+        android:background="@color/bordoyoter"
         android:textColor="@color/white"
         android:text="START" />
 
@@ -54,7 +54,7 @@
     <Button
         android:id="@+id/button3"
         android:layout_width="100dp"
-        android:background="@color/blueeee"
+        android:background="@color/bordoyoter"
         android:textColor="@color/white"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
@@ -64,7 +64,7 @@
     <Button
         android:id="@+id/btnNextEx"
         android:layout_width="100dp"
-        android:background="@color/blueeee"
+        android:background="@color/bordoyoter"
         android:textColor="@color/white"
         android:layout_height="wrap_content"
         android:layout_gravity="center"

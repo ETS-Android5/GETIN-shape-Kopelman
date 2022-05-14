@@ -11,4 +11,9 @@
     <color name="grey">#808080</color>
     <color name="twitterMain">#00acee</color>
     <color name="blueeee">#193f78</color>
+    <color name="bluegood">#203864</color>
+    <color name="bluemamash">#0d1e3d</color>
+    <color name="bordo"> #4a0101</color>
+    <color name="zahov"> #ffe699</color>
+    <color name="bordoyoter"> #730000</color>
 </resources>

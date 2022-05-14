@@ -10,7 +10,7 @@
     <TextView
         android:id="@+id/textView8"
         android:layout_margin="20dp"
-        android:textColor="@color/blueeee"
+        android:textColor="@color/bordoyoter"
         android:textSize="30dp"
         android:textAlignment="center"
         android:layout_width="match_parent"

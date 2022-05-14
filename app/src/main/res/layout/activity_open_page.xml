@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
-    android:background="@color/white"
+    android:background="@color/bordoyoter"
     tools:context=".Open">
 
     <ProgressBar
@@ -43,6 +43,6 @@
         android:id="@+id/imageView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:srcCompat="@drawable/logo" />
+        app:srcCompat="@drawable/logiii" />
 
 </RelativeLayout>

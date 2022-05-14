@@ -17,14 +17,13 @@
         android:gravity="center"
         android:layout_gravity="center"
         android:text="Choose Your Best Exercise"
-        android:textColor="@color/blueeee"
+        android:textColor="@color/black"
         android:textSize="25dp" />
 
     <Spinner
         android:id="@+id/spinner"
         android:layout_gravity="center"
         android:gravity="center"
-
         android:textAlignment="center"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
